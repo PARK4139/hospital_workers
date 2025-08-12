@@ -1,36 +1,83 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Auto: init env & sync (uv)",
-      "type": "shell",
-      "command": "set -e; if ! command -v uv >/dev/null 2>&1; then echo \"[PkMessages2025.INFO] uv not found in PATH\"; fi; if [ ! -d .venv_linux ]; then echo \"[PkMessages2025.INFO] creating .venv_linux\"; uv venv --directory .venv_linux; fi; . .venv_linux/bin/activate; uv sync; python -V",
-      "linux": {
-        "command": "set -e; if ! command -v uv >/dev/null 2>&1; then echo \"[PkMessages2025.INFO] uv not found in PATH\"; fi; if [ ! -d .venv_linux ]; then echo \"[PkMessages2025.INFO] creating .venv_linux\"; uv venv --directory .venv_linux; fi; . .venv_linux/bin/activate; uv sync; python -V"
-      },
-      "windows": {
-        "command": "$ErrorActionPreference='Stop'; if (-not (Get-Command uv -ErrorAction SilentlyContinue)) { Write-Host '[PkMessages2025.INFO] uv not found in PATH' }; if (-not (Test-Path '.venv')) { Write-Host '[PkMessages2025.INFO] creating .venv'; uv venv }; & '.\\\\.venv\\\\Scripts\\\\Activate.ps1'; uv sync; python -V"
-      },
-      "problemMatcher": [],
-      "runOptions": {
-        "runOn": "folderOpen"
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared",
-        "focus": false
-      },
-      "options": {
-        "shell": {
-          "linux": "/bin/bash",
-          "windows": "PowerShell"
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create Linux Virtual Environment",
+            "type": "shell",
+            "command": "uv",
+            "args": ["venv", ".venv_linux"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "uv를 사용하여 Linux용 가상환경을 생성합니다."
         },
-        "cwd": "${workspaceFolder}"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    }
-  ]
+        {
+            "label": "Create Windows Virtual Environment",
+            "type": "shell",
+            "command": "uv",
+            "args": ["venv", ".venv_windows"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "uv를 사용하여 Windows용 가상환경을 생성합니다."
+        },
+        {
+            "label": "Create Both Virtual Environments",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Create Linux Virtual Environment",
+                "Create Windows Virtual Environment"
+            ],
+            "group": "build",
+            "detail": "Linux와 Windows용 가상환경을 모두 생성합니다."
+        },
+        {
+            "label": "Install Dependencies (Linux)",
+            "type": "shell",
+            "command": "uv",
+            "args": ["sync", "--python", ".venv_linux/bin/python"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Linux 가상환경에 의존성을 설치합니다."
+        },
+        {
+            "label": "Install Dependencies (Windows)",
+            "type": "shell",
+            "command": "uv",
+            "args": ["sync", "--python", ".venv_windows/Scripts/python.exe"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Windows 가상환경에 의존성을 설치합니다."
+        }
+    ]
 }

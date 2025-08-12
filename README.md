@@ -242,7 +242,7 @@ docker compose -f servers/docker-compose.dev.yml logs page-server
 docker compose -f servers/docker-compose.dev.yml logs
 ```
 
-## 📝 최근 업데이트 (2024-08-12)
+## 📝 최근 업데이트 (2024-12-19)
 
 ### ✅ 해결된 문제들
 1. **한글 인코딩 문제**: 모든 스크립트의 한글 주석과 메시지 수정
@@ -265,6 +265,8 @@ docker compose -f servers/docker-compose.dev.yml logs
 - ✅ 데이터베이스 및 Redis 연결 정상
 - ✅ Python 기반 통합 스크립트 정상 작동
 - ✅ 자동 테스트 및 상태 확인 기능 완벽 동작
+- ✅ VS Code 태스크 설정 완료 (.vscode/tasks.json)
+- ✅ Git 줄바꿈 문자 설정 완료 (.gitattributes)
 
 ## 📚 추가 문서
 

@@ -1,0 +1,9 @@
+# LF 고정할 파일들
+*.sh         text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+*.gitmodules text eol=lf
+
+# Windows 전용 파일은 CRLF 유지
+*.bat        text eol=crlf
+*.cmd        text eol=crlf
