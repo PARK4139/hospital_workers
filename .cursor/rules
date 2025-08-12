@@ -1,0 +1,234 @@
+# 🏥 병원 근무자 관리 시스템 - Cursor AI 규칙
+
+## 🎯 프로젝트 개요
+이 프로젝트는 병원 근무자 관리 시스템으로, Next.js, FastAPI, PostgreSQL, Redis, Nginx를 활용한 현대적인 웹 애플리케이션입니다.
+
+## 🏗️ 기술 스택
+- **Frontend**: Next.js 15, TypeScript, Tailwind CSS, Zustand, NextAuth.js
+- **Backend**: FastAPI, Python 3.13
+- **Database**: PostgreSQL 15
+- **Cache**: Redis 7
+- **Proxy**: Nginx
+- **Container**: Docker & Docker Compose
+- **Package Manager**: uv (Python), npm (Node.js)
+
+## 📁 프로젝트 구조
+```
+business_with_ai/
+├── services/
+│   └── hospital_workers/           # 메인 프로젝트 디렉토리
+│       ├── scripts/                # 서비스 운영 스크립트
+│       │   ├── ensure_services_operated.py  # 통합 서비스 운영 스크립트 (Python)
+│       │   └── run_unit_tests.py            # 단위 테스트 실행 스크립트
+│       ├── tests/                  # 단위 테스트
+│       │   └── test_ensure_services_operated.py # ServiceManager 클래스 테스트
+│       ├── monitors/               # 서비스 모니터링 스크립트
+│       ├── servers/                # 서비스 소스 코드
+│       │   ├── page_server/        # Next.js 프론트엔드
+│       │   ├── api_server/         # FastAPI 백엔드
+│       │   ├── db_server/          # PostgreSQL 데이터베이스
+│       │   ├── nginx/              # Nginx 설정
+│       │   ├── docker-compose.dev.yml  # 개발용 Docker Compose
+│       │   └── docker-compose.prod.yml # 운영용 Docker Compose
+│       ├── docs/                   # 문서
+│       └── logs/                   # 로그
+```
+
+## 🚀 서비스 운영 명령어
+
+### 전체 서비스 실행
+```bash
+cd services/hospital_workers
+python3 scripts/ensure_services_operated.py --all
+```
+
+### 개별 서비스 실행
+```bash
+python3 scripts/ensure_services_operated.py --page-server
+python3 scripts/ensure_services_operated.py --api-server
+python3 scripts/ensure_services_operated.py --db-server
+python3 scripts/ensure_services_operated.py --nginx
+python3 scripts/ensure_services_operated.py --redis
+```
+
+### 서비스 상태 확인
+```bash
+python3 scripts/ensure_services_operated.py --status
+```
+
+### 서비스 로그 확인
+```bash
+python3 scripts/ensure_services_operated.py --logs
+```
+
+### 모든 서비스 중지
+```bash
+python3 scripts/ensure_services_operated.py --stop
+```
+
+### 서비스 테스트 (자동 실행)
+```bash
+# --all 또는 개별 서비스 실행 시 자동으로 테스트 실행
+python3 scripts/ensure_services_operated.py --all
+```
+
+### 서비스 모니터링
+```bash
+./monitors/ensure_service_monitored.sh
+```
+
+## 🔧 환경 설정 규칙
+
+### Windows 사용자
+1. **WSL2 사용 필수**: PowerShell에서 직접 실행 시 문제 발생
+2. **가상환경**: `.venv_linux` 사용
+3. **줄바꿈 문자**: LF (Linux) 사용, CRLF (Windows) 금지
+
+### Linux/WSL 사용자
+1. **가상환경**: `.venv_linux` 사용
+2. **권한**: `chmod +x scripts/*.sh` 실행 권한 부여
+3. **Docker**: Docker 서비스 실행 상태 확인
+
+## 📝 코딩 규칙
+
+### 파일 명명 규칙
+- **Python 스크립트**: `ensure_*.py` 형식 (예: `ensure_services_operated.py`)
+- **테스트 파일**: `test_*.py` 형식 (예: `test_ensure_services_operated.py`)
+- **Docker Compose**: `docker-compose.{env}.yml` 형식
+- **Python**: `pyproject.toml` + `uv.lock` 사용
+- **Node.js**: `package.json` + `package-lock.json` 사용
+
+### 주석 및 메시지
+- **한글 사용**: 모든 주석과 echo 메시지는 한글로 작성
+- **이모지 활용**: 상태 표시에 이모지 사용 (✅, ❌, ⚠️, 🔍, 🚀 등)
+- **일관성**: 모든 스크립트에서 동일한 메시지 형식 사용
+
+### 경로 규칙
+- **상대 경로**: `./servers/docker-compose.dev.yml` 형식 사용
+- **절대 경로 금지**: 하드코딩된 절대 경로 사용 금지
+- **프로젝트 루트**: `$PROJECT_ROOT` 변수 사용
+
+## 🐳 Docker 규칙
+
+### 컨테이너 명명
+- **서비스명**: `servers-{service}-1` 형식
+- **이미지명**: `servers-{service}` 형식
+
+### 포트 매핑 (개발 환경)
+- **Page Server**: 5173:5173
+- **API Server**: 8002:8000
+- **Nginx**: 80:80
+- **Database**: 15432:5432 (외부 접근용)
+- **Redis**: 16379:6379 (외부 접근용)
+
+### 포트 매핑 (내부 통신)
+- **Database**: 5432
+- **Redis**: 6379
+- **API Server**: 8000
+
+## 🧪 테스트 규칙
+
+### 테스트 순서
+1. **파일 구조 테스트**: 필수 파일 존재 확인
+2. **Docker Compose 문법 테스트**: 설정 파일 유효성 검증
+3. **컨테이너 상태 테스트**: 서비스 실행 상태 확인
+4. **포트 연결 테스트**: 네트워크 연결성 검증
+5. **HTTP 연결 테스트**: 웹 서비스 응답 확인
+6. **데이터베이스 연결 테스트**: DB 연결성 검증
+7. **Redis 연결 테스트**: 캐시 연결성 검증
+8. **트래픽 크로스 테스트**: 서비스 간 통신 검증
+
+### 테스트 결과 표시
+- **성공**: ✅ (녹색 체크)
+- **실패**: ❌ (빨간 X)
+- **경고**: ⚠️ (노란 경고)
+- **정보**: ℹ️ (파란 정보)
+
+## 🔍 문제 해결 규칙
+
+### 일반적인 문제
+1. **한글 깨짐**: `dos2unix scripts/*.sh` 실행
+2. **권한 문제**: `chmod +x scripts/*.sh` 실행
+3. **경로 문제**: `./servers/docker-compose.dev.yml` 확인
+4. **포트 충돌**: `netstat -tuln | grep :PORT` 확인
+5. **Docker 문제**: `sudo systemctl start docker` 실행
+
+### 로그 확인
+```bash
+# 특정 서비스 로그
+docker compose -f servers/docker-compose.dev.yml logs {service}
+
+# 전체 로그
+docker compose -f servers/docker-compose.dev.yml logs
+
+# 실시간 로그
+docker compose -f servers/docker-compose.dev.yml logs -f
+```
+
+## 📚 문서화 규칙
+
+### README.md 업데이트
+- **최근 업데이트**: 날짜와 함께 주요 변경사항 기록
+- **해결된 문제**: 문제와 해결 방법 상세 기록
+- **개선된 구조**: 아키텍처 변경사항 기록
+- **현재 상태**: 시스템 상태 요약
+
+### 주석 업데이트
+- **스크립트 변경**: 경로나 로직 변경 시 주석도 함께 업데이트
+- **한글 유지**: 모든 주석은 한글로 작성
+- **이모지 활용**: 가독성을 위한 이모지 사용
+
+## 🚫 금지 사항
+
+### 절대 금지
+- **CRLF 줄바꿈**: Windows 스타일 줄바꿈 문자 사용 금지
+- **절대 경로**: 하드코딩된 절대 경로 사용 금지
+- **영어 메시지**: 한글이 아닌 언어로 된 메시지 사용 금지
+- **권한 무시**: 스크립트 실행 권한 확인 없이 실행 금지
+
+### 권장하지 않음
+- **PowerShell 직접 실행**: Windows에서 Python 스크립트 직접 실행
+- **수동 컨테이너 관리**: Docker Compose 없이 개별 컨테이너 실행
+- **개발 환경 포트**: 운영 환경에서 개발용 포트 사용
+
+## 🔄 업데이트 규칙
+
+### 코드 변경 시
+1. **테스트 실행**: 변경 후 반드시 테스트 스크립트 실행
+2. **문서 업데이트**: README.md와 주석 업데이트
+3. **경로 확인**: 모든 스크립트에서 경로 일관성 확인
+4. **권한 확인**: 실행 권한 유지
+
+### 환경 변경 시
+1. **Docker Compose 확인**: 포트 충돌 여부 확인
+2. **의존성 확인**: Python/Node.js 패키지 호환성 확인
+3. **스크립트 테스트**: 모든 스크립트 정상 동작 확인
+4. **문서 반영**: 변경사항을 README.md에 반영
+
+## 📅 최근 업데이트 (2024-08-12)
+
+### ✅ 해결된 문제들
+1. **한글 인코딩 문제**: 모든 스크립트의 한글 주석과 메시지 수정
+2. **줄바꿈 문자 문제**: Windows CRLF → Linux LF 변환으로 `bad interpreter` 오류 해결
+3. **Docker Compose 경로 문제**: 스크립트 내 경로를 `servers/docker-compose.dev.yml`로 수정
+4. **포트 충돌 방지**: 개발 환경에서 DB(15432), Redis(16379) 포트 분리
+5. **서비스 상태 파싱 문제**: JSON 상태값(`running`) 인식 및 매핑 로직 개선
+
+### 🔄 개선된 구조
+1. **Docker Compose 최적화**: 개발용/운영용 분리
+2. **스크립트 통합**: 모든 shell 스크립트를 `ensure_services_operated.py`로 통합
+3. **Python 기반**: 크로스 플랫폼 호환성 향상 및 유지보수성 개선
+4. **자동 테스트**: 서비스 실행 시 자동으로 환경 및 상태 테스트 실행
+5. **단위 테스트**: `ServiceManager` 클래스에 대한 포괄적인 테스트 추가
+
+### 🚀 현재 상태
+- ✅ 모든 서비스 정상 실행
+- ✅ 컨테이너 간 네트워크 연결 정상
+- ✅ 포트 연결 및 HTTP 응답 정상
+- ✅ 데이터베이스 및 Redis 연결 정상
+- ✅ Python 기반 통합 스크립트 정상 작동
+- ✅ 자동 테스트 및 상태 확인 기능 완벽 동작
+
+---
+
+**🏥 병원 근무자 관리 시스템** - 현대적이고 효율적인 병원 근무 관리 솔루션
