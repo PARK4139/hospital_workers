@@ -286,6 +286,8 @@ docker compose -f servers/docker-compose.dev.yml logs
 3. **Docker Compose 경로 문제**: 스크립트 내 경로를 `servers/docker-compose.dev.yml`로 수정
 4. **포트 충돌 방지**: 개발 환경에서 DB(15432), Redis(16379) 포트 분리
 5. **서비스 상태 파싱 문제**: JSON 상태값(`running`) 인식 및 매핑 로직 개선
+6. **모니터링 스크립트 경로 문제**: `services/hospital_workers/docker-compose.yml` → `servers/docker-compose.dev.yml`로 수정
+7. **Selenium 테스트 환경 제한**: Windows 네이티브 환경에서만 실행하도록 규칙 추가
 
 ### 🔄 개선된 구조
 1. **Docker Compose 최적화**: 개발용/운영용 분리
@@ -293,16 +295,21 @@ docker compose -f servers/docker-compose.dev.yml logs
 3. **Python 기반**: 크로스 플랫폼 호환성 향상 및 유지보수성 개선
 4. **자동 테스트**: 서비스 실행 시 자동으로 환경 및 상태 테스트 실행
 5. **단위 테스트**: `ServiceManager` 클래스에 대한 포괄적인 테스트 추가
+6. **서비스 모니터링**: 대화형 메뉴 기반 모니터링 시스템 구축
+7. **Selenium 테스트**: 브라우저 자동 종료 방지 및 Windows 환경 최적화
 
 ### 🚀 현재 상태
-- ✅ 모든 서비스 정상 실행
+- ✅ 모든 서비스 정상 실행 (Page Server, API Server, DB Server, Nginx, Redis)
 - ✅ 컨테이너 간 네트워크 연결 정상
 - ✅ 포트 연결 및 HTTP 응답 정상
 - ✅ 데이터베이스 및 Redis 연결 정상
 - ✅ Python 기반 통합 스크립트 정상 작동
 - ✅ 자동 테스트 및 상태 확인 기능 완벽 동작
+- ✅ 서비스 모니터링 시스템 완벽 동작
+- ✅ Selenium 로그인 루틴 테스트 성공
 - ✅ VS Code 태스크 설정 완료 (.vscode/tasks.json)
 - ✅ Git 줄바꿈 문자 설정 완료 (.gitattributes)
+- ✅ README.md 및 .cursor/rules 최신화 완료
 
 ## 📚 추가 문서
 
