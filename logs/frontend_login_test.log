@@ -1,0 +1,325 @@
+2025-08-11 02:55:50,073 - INFO - Windows 환경 설정이 완료되었습니다
+2025-08-11 02:55:50,077 - INFO - Windows 환경 설정 테스트 시작...
+2025-08-11 02:55:50,079 - INFO - 모든 필요한 패키지가 설치되어 있습니다
+2025-08-11 02:55:50,079 - INFO - Windows 환경 설정 테스트 통과
+2025-08-11 02:55:50,089 - INFO - Chrome WebDriver 설정 시작...
+2025-08-11 02:55:50,090 - INFO - ====== WebDriver manager ======
+2025-08-11 02:56:08,315 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 02:56:08,442 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 02:56:08,499 - INFO - Driver [C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183\chromedriver-win32/chromedriver.exe] found in cache
+2025-08-11 02:56:13,544 - INFO - Chrome WebDriver 설정 완료
+2025-08-11 02:56:13,554 - INFO - 페이지 로드 및 제목 테스트 시작...
+2025-08-11 02:56:28,401 - INFO - 페이지 제목: Create Next App
+2025-08-11 02:56:38,487 - ERROR - 요소 대기 실패 (tag name=form): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:56:38,983 - ERROR - 로그인 폼을 찾을 수 없습니다
+2025-08-11 02:56:40,580 - INFO - 로그인 폼 구조 테스트 시작...
+2025-08-11 02:56:50,601 - ERROR - 요소 대기 실패 (name=email): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:56:51,051 - INFO - 유효한 자격증명으로 로그인 테스트 시작...
+2025-08-11 02:57:01,068 - ERROR - 요소 대기 실패 (name=email): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:57:01,283 - ERROR - 로그인 테스트 실패: 'NoneType' object has no attribute 'clear'
+2025-08-11 02:57:01,336 - INFO - 잘못된 자격증명으로 로그인 테스트 시작...
+2025-08-11 02:57:11,377 - ERROR - 요소 대기 실패 (name=email): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:57:11,927 - ERROR - 잘못된 자격증명 로그인 테스트 실패: 'NoneType' object has no attribute 'clear'
+2025-08-11 02:57:12,613 - INFO - 폼 유효성 검사 테스트 시작...
+2025-08-11 02:57:22,681 - ERROR - 요소 대기 실패 (xpath=//button[@type='submit']): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:57:22,715 - ERROR - 클릭 실패: Message: javascript error: Cannot read properties of null (reading 'scrollIntoView')
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x3488e9]
+	(No symbol) [0x0x34aec3]
+	(No symbol) [0x0x3d17b4]
+	(No symbol) [0x0x3af3ac]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:57:34,759 - ERROR - 요소 대기 실패 (class name=error): Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x4fba83+63395]
+	GetHandleVerifier [0x0x4fbac4+63460]
+	(No symbol) [0x0x342113]
+	(No symbol) [0x0x38a85e]
+	(No symbol) [0x0x38abfb]
+	(No symbol) [0x0x3d2f92]
+	(No symbol) [0x0x3af3f4]
+	(No symbol) [0x0x3d07ba]
+	(No symbol) [0x0x3af1a6]
+	(No symbol) [0x0x37e7b2]
+	(No symbol) [0x0x37f654]
+	GetHandleVerifier [0x0x778883+2672035]
+	GetHandleVerifier [0x0x773cba+2652634]
+	GetHandleVerifier [0x0x522bca+223466]
+	GetHandleVerifier [0x0x512cb8+158168]
+	GetHandleVerifier [0x0x51978d+185517]
+	GetHandleVerifier [0x0x503b78+96408]
+	GetHandleVerifier [0x0x503d02+96802]
+	GetHandleVerifier [0x0x4ee90a+9770]
+	BaseThreadInitThunk [0x0x7727fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x77e882ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x77e8827e+238]
+
+2025-08-11 02:57:34,976 - INFO - 유효성 검사 메시지가 표시되지 않음
+2025-08-11 02:57:35,219 - INFO - 폼 유효성 검사 테스트 완료
+2025-08-11 02:57:35,226 - INFO - 탭 네비게이션 테스트 시작...
+2025-08-11 02:57:54,002 - INFO - Chrome WebDriver를 열린 상태로 유지합니다
+2025-08-11 19:20:54,900 - INFO - Windows 환경 설정이 완료되었습니다
+2025-08-11 19:20:54,902 - INFO - 환경 설정 테스트 시작...
+2025-08-11 19:20:54,903 - INFO - 모든 필요한 패키지가 설치되어 있습니다
+2025-08-11 19:20:54,906 - INFO - 환경 설정 테스트 통과
+2025-08-11 19:20:54,912 - INFO - Chrome WebDriver 설정 시작...
+2025-08-11 19:20:54,913 - INFO - Windows 환경: headless 모드 비활성화 (브라우저 창 표시)
+2025-08-11 19:20:54,915 - INFO - ====== WebDriver manager ======
+2025-08-11 19:21:12,106 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 19:21:12,267 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 19:21:12,453 - INFO - Driver [C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183\chromedriver-win32/chromedriver.exe] found in cache
+2025-08-11 19:21:19,957 - INFO - Chrome WebDriver 설정 완료
+2025-08-11 19:21:19,958 - INFO - 페이지 로드 및 제목 테스트 시작...
+2025-08-11 19:21:24,372 - ERROR - 페이지 로드 테스트 실패: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0x4bba83+63395]
+	GetHandleVerifier [0x0x4bbac4+63460]
+	(No symbol) [0x0x302113]
+	(No symbol) [0x0x2ff84b]
+	(No symbol) [0x0x2f30c2]
+	(No symbol) [0x0x2f4af5]
+	(No symbol) [0x0x2f3358]
+	(No symbol) [0x0x2f2e93]
+	(No symbol) [0x0x2f2ba1]
+	(No symbol) [0x0x2f0b44]
+	(No symbol) [0x0x2f14eb]
+	(No symbol) [0x0x305b3e]
+	(No symbol) [0x0x391387]
+	(No symbol) [0x0x36f3ac]
+	(No symbol) [0x0x3907ba]
+	(No symbol) [0x0x36f1a6]
+	(No symbol) [0x0x33e7b2]
+	(No symbol) [0x0x33f654]
+	GetHandleVerifier [0x0x738883+2672035]
+	GetHandleVerifier [0x0x733cba+2652634]
+	GetHandleVerifier [0x0x4e2bca+223466]
+	GetHandleVerifier [0x0x4d2cb8+158168]
+	GetHandleVerifier [0x0x4d978d+185517]
+	GetHandleVerifier [0x0x4c3b78+96408]
+	GetHandleVerifier [0x0x4c3d02+96802]
+	GetHandleVerifier [0x0x4ae90a+9770]
+	BaseThreadInitThunk [0x0x7747fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x779082ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7790827e+238]
+
+2025-08-11 19:21:26,007 - INFO - 로그인 폼 구조 테스트 시작...
+2025-08-11 19:21:37,301 - INFO - Chrome WebDriver를 열린 상태로 유지합니다
+2025-08-11 19:36:45,425 - INFO - Windows 환경 설정이 완료되었습니다
+2025-08-11 19:36:45,429 - INFO - 환경 설정 테스트 시작...
+2025-08-11 19:36:45,431 - INFO - 모든 필요한 패키지가 설치되어 있습니다
+2025-08-11 19:36:45,431 - INFO - 환경 설정 테스트 통과
+2025-08-11 19:36:45,437 - INFO - 서비스 가용성 테스트 시작...
+2025-08-11 19:36:50,110 - WARNING - 서비스 frontend 상태 확인 실패: HTTPConnectionPool(host='localhost', port=5173): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6AAE37B60>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다'))
+2025-08-11 19:36:54,837 - WARNING - 서비스 api 상태 확인 실패: HTTPConnectionPool(host='localhost', port=8002): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6AAE8E5D0>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다'))
+2025-08-11 19:36:57,119 - WARNING - ⚠️ 서비스 frontend 사용 불가
+2025-08-11 19:36:57,123 - WARNING - ⚠️ 서비스 api 사용 불가
+2025-08-11 19:36:57,125 - WARNING - ⚠️ 서비스 database 사용 불가
+2025-08-11 19:36:57,127 - INFO - 서비스 가용성 테스트 완료 (서비스 없이도 테스트 계속)
+2025-08-11 19:36:57,130 - INFO - Chrome WebDriver 설정 시작...
+2025-08-11 19:36:57,131 - INFO - Windows 환경: headless 모드 비활성화 (브라우저 창 표시)
+2025-08-11 19:36:57,132 - INFO - ====== WebDriver manager ======
+2025-08-11 19:37:15,246 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 19:37:15,330 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 19:37:15,432 - INFO - Driver [C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183\chromedriver-win32/chromedriver.exe] found in cache
+2025-08-11 19:37:18,644 - INFO - Chrome WebDriver 설정 완료
+2025-08-11 19:37:18,645 - INFO - 페이지 로드 및 제목 테스트 시작...
+2025-08-11 19:37:23,418 - WARNING - 서비스 frontend 상태 확인 실패: HTTPConnectionPool(host='localhost', port=5173): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6AABEB950>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다'))
+2025-08-11 19:37:23,423 - WARNING - 프론트엔드 서비스가 실행되지 않음 - 모의 테스트 진행
+2025-08-11 19:37:23,445 - INFO - 현재 URL: chrome://new-tab-page/
+2025-08-11 19:37:25,623 - INFO - 모의 페이지 제목: Mock Login Page
+2025-08-11 19:37:25,875 - INFO - 📸 모의 페이지 로드 성공 스크린샷 저장
+2025-08-11 19:37:25,876 - INFO - 모의 페이지 로드 테스트 통과
+2025-08-11 19:37:25,879 - INFO - 로그인 폼 구조 테스트 시작...
+2025-08-11 19:37:25,972 - INFO - 로그인 폼 구조 테스트 통과
+2025-08-11 19:37:25,976 - INFO - 폼 상호작용 테스트 시작...
+2025-08-11 19:37:26,223 - INFO - 이메일 입력 성공
+2025-08-11 19:37:26,427 - INFO - 비밀번호 입력 성공
+2025-08-11 19:37:26,693 - INFO - 폼 상호작용 테스트 통과
+2025-08-11 19:37:26,696 - INFO - 브라우저 기능 테스트 시작...
+2025-08-11 19:37:26,706 - INFO - 원래 창 크기: {'width': 1554, 'height': 882}
+2025-08-11 19:37:27,878 - INFO - 창 크기 변경: {'width': 1024, 'height': 768}
+2025-08-11 19:37:30,040 - INFO - 창 크기 변경: {'width': 1367, 'height': 768}
+2025-08-11 19:37:31,920 - INFO - 창 크기 변경: {'width': 1554, 'height': 882}
+2025-08-11 19:37:35,025 - INFO - 브라우저 기능 테스트 통과
+2025-08-11 19:37:35,039 - INFO - Selenium 기능 테스트 시작...
+2025-08-11 19:37:35,507 - ERROR - Selenium 기능 테스트 실패: Message: invalid cookie domain
+  (Session info: chrome=138.0.7204.184)
+Stacktrace:
+	GetHandleVerifier [0x0xfaba83+63395]
+	GetHandleVerifier [0x0xfabac4+63460]
+	(No symbol) [0x0xdf1f70]
+	(No symbol) [0x0xe91320]
+	(No symbol) [0x0xe5f3ac]
+	(No symbol) [0x0xe807ba]
+	(No symbol) [0x0xe5f1a6]
+	(No symbol) [0x0xe2e7b2]
+	(No symbol) [0x0xe2f654]
+	GetHandleVerifier [0x0x1228883+2672035]
+	GetHandleVerifier [0x0x1223cba+2652634]
+	GetHandleVerifier [0x0xfd2bca+223466]
+	GetHandleVerifier [0x0xfc2cb8+158168]
+	GetHandleVerifier [0x0xfc978d+185517]
+	GetHandleVerifier [0x0xfb3b78+96408]
+	GetHandleVerifier [0x0xfb3d02+96802]
+	GetHandleVerifier [0x0xf9e90a+9770]
+	BaseThreadInitThunk [0x0x7747fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x779082ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7790827e+238]
+
+2025-08-11 19:37:36,908 - INFO - 종합 검증 테스트 시작...
+2025-08-11 19:37:41,616 - WARNING - 서비스 frontend 상태 확인 실패: HTTPConnectionPool(host='localhost', port=5173): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6AABEBA80>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다'))
+2025-08-11 19:37:46,435 - WARNING - 서비스 api 상태 확인 실패: HTTPConnectionPool(host='localhost', port=8002): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6AAF94EF0>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다'))
+2025-08-11 19:37:48,715 - INFO - 환경 정보: {'os': 'Windows', 'python_path': 'C:\\Users\\pk\\Downloads\\business_with_ai\\.venv_windows\\Scripts\\python.exe', 'services': {'frontend': False, 'api': False, 'database': False}}
+2025-08-11 19:37:48,828 - INFO - 브라우저 정보: {'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'window_size': {'width': 1554, 'height': 882}, 'current_url': "data:text/html,<html><head><title>Mock Login Page</title></head><body><h1>Login Test</h1><form><input name='email'><input name='password'><button type='submit'>Login</button></form></body></html>"}
+2025-08-11 19:37:49,144 - INFO - 🎉 모든 테스트가 완료되었습니다!
+2025-08-11 19:37:49,152 - INFO - 🔧 환경: Windows
+2025-08-11 19:37:49,155 - INFO - 🐍 Python: C:\Users\pk\Downloads\business_with_ai\.venv_windows\Scripts\python.exe
+2025-08-11 19:37:49,155 - INFO - 🌐 서비스 상태: {'frontend': False, 'api': False, 'database': False}
+2025-08-11 19:37:49,156 - INFO - 🔒 Chrome 브라우저를 열린 상태로 유지합니다.
+2025-08-11 19:37:49,158 - INFO - 💡 브라우저를 수동으로 종료하려면 브라우저 창을 닫으세요.
+2025-08-11 19:37:49,169 - INFO - Chrome WebDriver를 열린 상태로 유지합니다
+2025-08-12 00:16:15,336 - INFO - Windows 환경 설정이 완료되었습니다
+2025-08-12 00:16:15,339 - INFO - 환경 설정 테스트 시작...
+2025-08-12 00:16:15,340 - INFO - 모든 필요한 패키지가 설치되어 있습니다
+2025-08-12 00:16:15,340 - INFO - 환경 설정 테스트 통과
+2025-08-12 00:16:15,347 - INFO - 서비스 가용성 테스트 시작...

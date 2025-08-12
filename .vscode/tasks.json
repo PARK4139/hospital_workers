@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Auto: init env & sync (uv)",
+      "type": "shell",
+      "command": "set -e; if ! command -v uv >/dev/null 2>&1; then echo \"[PkMessages2025.INFO] uv not found in PATH\"; fi; if [ ! -d .venv_linux ]; then echo \"[PkMessages2025.INFO] creating .venv_linux\"; uv venv --directory .venv_linux; fi; . .venv_linux/bin/activate; uv sync; python -V",
+      "linux": {
+        "command": "set -e; if ! command -v uv >/dev/null 2>&1; then echo \"[PkMessages2025.INFO] uv not found in PATH\"; fi; if [ ! -d .venv_linux ]; then echo \"[PkMessages2025.INFO] creating .venv_linux\"; uv venv --directory .venv_linux; fi; . .venv_linux/bin/activate; uv sync; python -V"
+      },
+      "windows": {
+        "command": "$ErrorActionPreference='Stop'; if (-not (Get-Command uv -ErrorAction SilentlyContinue)) { Write-Host '[PkMessages2025.INFO] uv not found in PATH' }; if (-not (Test-Path '.venv')) { Write-Host '[PkMessages2025.INFO] creating .venv'; uv venv }; & '.\\\\.venv\\\\Scripts\\\\Activate.ps1'; uv sync; python -V"
+      },
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": false
+      },
+      "options": {
+        "shell": {
+          "linux": "/bin/bash",
+          "windows": "PowerShell"
+        },
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

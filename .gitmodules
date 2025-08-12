@@ -1,0 +1,4 @@
+[submodule "prompts"]
+	path = prompts
+	url = https://github.com/PARK4139/prompts.git
+	branch = main

@@ -1,0 +1,22 @@
+2025-08-11 00:40:17,718 - INFO - 🚀 프론트엔드 테스트 시작
+2025-08-11 00:40:17,720 - INFO - 🌐 Chrome WebDriver 설정 중...
+2025-08-11 00:40:17,720 - INFO - ====== WebDriver manager ======
+2025-08-11 00:40:33,366 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:40:33,471 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:40:33,528 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:40:33,805 - INFO - WebDriver version 138.0.7204.183 selected
+2025-08-11 00:40:33,817 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.183/win32/chromedriver-win32.zip
+2025-08-11 00:40:33,818 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.183/win32/chromedriver-win32.zip
+2025-08-11 00:40:33,928 - INFO - Driver downloading response is 200
+2025-08-11 00:40:40,233 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:40:40,619 - INFO - Driver has been saved in cache [C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183]
+2025-08-11 00:40:40,628 - ERROR - ❌ 테스트 실행 중 오류 발생: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-08-11 00:51:20,788 - INFO - 🚀 프론트엔드 테스트 시작
+2025-08-11 00:51:20,799 - INFO - 🌐 Chrome WebDriver 설정 중...
+2025-08-11 00:51:20,800 - INFO - ✅ Chrome 경로 설정: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-08-11 00:51:20,802 - INFO - ====== WebDriver manager ======
+2025-08-11 00:51:43,333 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:51:43,467 - INFO - Get LATEST chromedriver version for google-chrome
+2025-08-11 00:51:43,523 - INFO - Driver [C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183\chromedriver-win32/chromedriver.exe] found in cache
+2025-08-11 00:51:43,525 - INFO - ✅ ChromeDriver 경로: C:\Users\pk\.wdm\drivers\chromedriver\win64\138.0.7204.183\chromedriver-win32/chromedriver.exe

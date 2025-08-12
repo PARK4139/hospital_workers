@@ -1,0 +1,1 @@
+../.venv_windows/Scripts/activate

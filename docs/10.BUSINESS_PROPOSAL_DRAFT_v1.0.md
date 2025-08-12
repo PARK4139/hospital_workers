@@ -1,0 +1,231 @@
+# HealBase 병원 직원용 서비스 기획서
+
+## 1. 프로젝트 개요
+
+### 1.1 서비스 소개
+- **서비스명**: HealBase Hospital Worker
+- **서비스 목적**: 병원 직원을 위한 실별 위치 안내 및 업무 지원 플랫폼
+- **타겟 사용자**: 병원 직원 (의사, 간호사, 행정직원 등)
+
+### 1.2 핵심 기능
+- 병원 직원 로그인/회원가입 시스템
+- 실별 위치 가이드 및 네비게이션
+- 광고 및 공지사항 시스템
+- 메인 대시보드
+
+## 2. 기술 아키텍처
+
+### 2.1 전체 시스템 아키텍처
+- **아키텍처 패턴**: DDD (Domain Driven Design)
+- **마이크로서비스**: MSA (Microservice Architecture)
+- **컨테이너화**: Docker (MSA 단위별 컨테이너 구성)
+
+### 2.2 서버 구성
+```
+┌─────────────────┐    ┌─────────────────┐
+│   로그인 서버    │    │    API 서버     │
+│   (Auth Server) │────│  (FastAPI)      │
+└─────────────────┘    └─────────────────┘
+```
+
+### 2.3 개발 환경
+- **API Framework**: FastAPI
+- **컨테이너**: Docker (서비스별 컨테이너 구성)
+- **Python 패키지 관리**: uv (고성능 Python 패키지 매니저)
+
+## 3. API 설계
+
+### 3.1 URL 구조 패턴
+```
+api/{service_name}/v{version}/{domain}/{action}/
+```
+
+### 3.2 API 엔드포인트
+
+#### 3.2.1 인증 관련 API
+```
+POST   api/heal_base_hospital_worker/v1/ensure/login/guide/     # 가이드 로그인
+POST   api/heal_base_hospital_worker/v1/ensure/login/google/    # Google OAuth 로그인
+POST   api/heal_base_hospital_worker/v1/ensure/signup/          # 회원가입
+```
+
+#### 3.2.2 메인 서비스 API
+```
+GET    api/heal_base_hospital_worker/v1/ensure/main/                      # 메인 대시보드
+GET    api/heal_base_hospital_worker/v1/ensure/main/location/{room_id}/   # 실별 위치 가이드 + 광고
+```
+
+## 4. 도메인 모델링 (DDD)
+
+### 4.1 바운디드 컨텍스트
+1. **인증 컨텍스트 (Authentication Context)**
+   - 사용자 인증, 권한 관리
+   
+2. **병원 정보 컨텍스트 (Hospital Information Context)**
+   - 실 정보, 위치 데이터
+   
+3. **광고 컨텍스트 (Advertisement Context)**
+   - 광고 콘텐츠 관리
+
+### 4.2 주요 도메인 엔티티
+- **User**: 병원 직원 정보
+- **Room**: 병원 실 정보
+- **Location**: 위치 데이터
+- **Advertisement**: 광고 정보
+
+## 5. 마이크로서비스 구성
+
+### 5.1 서비스 분할
+```
+┌─────────────────────┐
+│   Auth Service      │  ← 로그인, 인증
+├─────────────────────┤
+│   Hospital Service  │  ← 병원 정보, 위치
+├─────────────────────┤
+│   Ad Service        │  ← 광고 관리
+├─────────────────────┤
+│   API Gateway       │  ← 라우팅, 로드밸런싱
+└─────────────────────┘
+```
+
+### 5.2 Docker 컨테이너 구성
+```dockerfile
+# 각 마이크로서비스별 Dockerfile 구성
+heal-base-auth/
+  ├── Dockerfile
+  ├── requirements.txt
+  └── pyproject.toml
+
+heal-base-hospital/
+  ├── Dockerfile
+  ├── requirements.txt
+  └── pyproject.toml
+
+heal-base-ad/
+  ├── Dockerfile
+  ├── requirements.txt
+  └── pyproject.toml
+```
+
+## 6. 데이터베이스 설계
+
+### 6.1 데이터베이스 분리
+- **Auth DB**: 사용자 인증 정보
+- **Hospital DB**: 병원 및 위치 정보
+- **Ad DB**: 광고 데이터
+
+### 6.2 주요 테이블 구조
+```sql
+-- 사용자 테이블
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    email VARCHAR(255) UNIQUE,
+    password_hash VARCHAR(255),
+    employee_id VARCHAR(50),
+    department VARCHAR(100),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+-- 실 정보 테이블
+CREATE TABLE rooms (
+    id UUID PRIMARY KEY,
+    room_number VARCHAR(50),
+    room_name VARCHAR(100),
+    floor INTEGER,
+    department VARCHAR(100),
+    location_data JSONB,
+    created_at TIMESTAMP
+);
+
+-- 광고 테이블
+CREATE TABLE advertisements (
+    id UUID PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT,
+    room_id UUID REFERENCES rooms(id),
+    display_order INTEGER,
+    is_active BOOLEAN,
+    created_at TIMESTAMP
+);
+```
+
+## 7. 기능 명세서
+
+### 7.1 로그인 기능
+- **가이드 로그인**: 병원 직원 ID/PW 기반 로그인
+- **Google 로그인**: OAuth 2.0 기반 소셜 로그인
+- JWT 토큰 기반 세션 관리
+
+### 7.2 회원가입 기능
+- 직원 정보 입력 및 검증
+- 부서별 권한 설정
+- 이메일 인증
+
+### 7.3 메인 대시보드
+- 개인 정보 표시
+- 빠른 검색 기능
+- 최근 조회한 실 목록
+
+### 7.4 실별 위치 가이드
+- 3D/2D 병원 지도
+- 실시간 길찾기
+- QR 코드 스캔 기능
+- 관련 광고 표시
+
+## 8. 개발 일정 (예상)
+
+### Phase 1: 기반 구조 구축 (4주)
+- Docker 환경 구성
+- 기본 FastAPI 서버 구축
+- 데이터베이스 설계 및 구축
+
+### Phase 2: 인증 시스템 개발 (3주)
+- 로그인/회원가입 API 개발
+- JWT 토큰 시스템 구현
+- Google OAuth 연동
+
+### Phase 3: 핵심 기능 개발 (5주)
+- 실 정보 관리 시스템
+- 위치 가이드 기능
+- 광고 시스템
+
+### Phase 4: 테스트 및 배포 (2주)
+- 통합 테스트
+- 성능 최적화
+- 운영 환경 배포
+
+## 9. 운영 계획
+
+### 9.1 모니터링
+- 각 마이크로서비스별 헬스체크
+- API 응답시간 모니터링
+- 에러 로그 수집 및 분석
+
+### 9.2 확장성 고려사항
+- 수평적 확장 가능한 구조
+- 캐시 시스템 도입 (Redis)
+- CDN을 통한 정적 파일 서비스
+
+### 9.3 보안
+- HTTPS 통신 강제
+- API Rate Limiting
+- 개인정보 암호화 저장
+
+## 10. 예산 및 리소스
+
+### 10.1 개발 리소스
+- 백엔드 개발자: 2명
+- 프론트엔드 개발자: 1명
+- DevOps 엔지니어: 1명
+
+### 10.2 인프라 비용 (월간 예상)
+- 클라우드 서버: $500-800
+- 데이터베이스: $200-300
+- 모니터링 도구: $100-200
+
+---
+
+**작성일**: 2025년 8월 7일  
+**작성자**: 클로드 ai
+**버전**: v1.0

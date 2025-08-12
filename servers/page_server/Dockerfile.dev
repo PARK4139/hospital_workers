@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# 패키지 파일 복사
+COPY package*.json ./
+
+# 의존성 설치
+RUN npm install
+
+# 소스 코드 복사
+COPY . .
+
+# node_modules 확인
+RUN ls -la node_modules/.bin/ | grep next || echo "next not found in node_modules/.bin/"
+
+# 개발 서버 실행
+EXPOSE 5173
+ENTRYPOINT ["npm", "run", "dev"]

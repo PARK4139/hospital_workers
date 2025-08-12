@@ -1,0 +1,39 @@
+# 멀티스테이지 빌드 - 개발 환경 최적화
+FROM python:3.11-slim as base
+
+# 공통 시스템 패키지 설치
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# 개발 단계
+FROM base as development
+
+WORKDIR /app
+
+# 핵심 개발 의존성만 설치 (빠른 빌드를 위해)
+RUN pip install --no-cache-dir \
+    fastapi \
+    "uvicorn[standard]" \
+    python-multipart \
+    pydantic \
+    watchdog
+
+# 데이터베이스 관련 패키지 (필요시에만)
+RUN pip install --no-cache-dir \
+    sqlalchemy \
+    psycopg2-binary
+
+# 인증 관련 패키지 (필요시에만)
+RUN pip install --no-cache-dir \
+    python-jose \
+    passlib \
+    bcrypt
+
+# 포트 노출
+EXPOSE 8000
+
+# 개발 모드 실행 (볼륨 마운트로 코드 변경사항 즉시 반영)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--reload-dir", "/app"]
