@@ -32,7 +32,7 @@ python3 scripts/ensure_services_operated.py
 
 #### 개별 서비스 실행
 ```bash
-# 전체 서비스 실행
+# 전체 서비스 실행 (권장)
 python3 scripts/ensure_services_operated.py --all
 
 # 개별 서비스 실행
@@ -52,12 +52,37 @@ python3 scripts/ensure_services_operated.py --logs
 python3 scripts/ensure_services_operated.py --stop
 ```
 
+#### 🐳 Docker Compose 직접 사용
+```bash
+# 서비스 빌드 및 실행
+docker compose -f servers/docker-compose.dev.yml up -d
+
+# 서비스 상태 확인
+docker compose -f servers/docker-compose.dev.yml ps
+
+# 서비스 로그 확인
+docker compose -f servers/docker-compose.dev.yml logs -f
+
+# 서비스 중지
+docker compose -f servers/docker-compose.dev.yml down
+```
+
 ### 2. 서비스 모니터링
 
-#### 대화형 메뉴 사용
+#### 대화형 메뉴 사용 (권장)
 ```bash
 ./monitors/ensure_service_monitored.sh
 ```
+
+#### 모니터링 옵션
+1. **Page Server 모니터링** - Next.js 서버 상태 및 리소스 사용량
+2. **API Server 모니터링** - FastAPI 서버 상태 및 엔드포인트 테스트
+3. **Database Server 모니터링** - PostgreSQL 연결 및 성능
+4. **Nginx 모니터링** - 리버스 프록시 상태
+5. **Redis 모니터링** - 캐시 서버 연결 상태
+6. **전체 서비스 모니터링** - 모든 서비스 통합 상태
+7. **연속 모니터링** - 실시간 모니터링 (5초 간격)
+8. **요약 모니터링** - 서비스 상태 및 리소스 요약
 
 #### 명령행 옵션 사용
 ```bash
@@ -85,6 +110,17 @@ python3 scripts/ensure_services_operated.py --all
 - 🔍 컨테이너 상태 테스트 (실행 중인 서비스 확인)
 - 🔍 포트 연결 테스트 (HTTP, 데이터베이스, Redis)
 - 🔍 서비스 간 네트워크 연결 테스트
+
+#### 🧪 Selenium 테스트
+```bash
+# 로그인 루틴 테스트 (Windows/WSL2)
+python -m pytest tests/test_login_routine_via_selenium_at_windows.py -v -s
+
+# 테스트 전제 조건
+# - 모든 서비스가 실행 중이어야 함
+# - Chrome WebDriver가 설치되어 있어야 함
+# - WSL2 환경에서 실행 권장
+```
 
 ## 📊 서비스 운영 메뉴
 

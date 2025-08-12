@@ -36,7 +36,7 @@ business_with_ai/
 
 ## 🚀 서비스 운영 명령어
 
-### 전체 서비스 실행
+### 전체 서비스 실행 (권장)
 ```bash
 cd services/hospital_workers
 python3 scripts/ensure_services_operated.py --all
@@ -49,6 +49,21 @@ python3 scripts/ensure_services_operated.py --api-server
 python3 scripts/ensure_services_operated.py --db-server
 python3 scripts/ensure_services_operated.py --nginx
 python3 scripts/ensure_services_operated.py --redis
+```
+
+### Docker Compose 직접 사용
+```bash
+# 서비스 빌드 및 실행
+docker compose -f servers/docker-compose.dev.yml up -d
+
+# 서비스 상태 확인
+docker compose -f servers/docker-compose.dev.yml ps
+
+# 서비스 로그 확인
+docker compose -f servers/docker-compose.dev.yml logs -f
+
+# 서비스 중지
+docker compose -f servers/docker-compose.dev.yml down
 ```
 
 ### 서비스 상태 확인
@@ -75,6 +90,17 @@ python3 scripts/ensure_services_operated.py --all
 ### 서비스 모니터링
 ```bash
 ./monitors/ensure_service_monitored.sh
+```
+
+### 🧪 Selenium 테스트
+```bash
+# 로그인 루틴 테스트
+python -m pytest tests/test_login_routine_via_selenium_at_windows.py -v -s
+
+# 테스트 전제 조건
+# - 모든 서비스가 실행 중이어야 함
+# - Chrome WebDriver가 설치되어 있어야 함
+# - WSL2 환경에서 실행 권장
 ```
 
 ## 🔧 환경 설정 규칙

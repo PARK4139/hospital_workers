@@ -51,11 +51,11 @@ monitor_service() {
     echo "----------------------------------------"
     
     # 컨테이너 상태 확인
-    if docker compose -f services/hospital_workers/docker-compose.yml ps | grep -q "$service.*Up"; then
+    if docker compose -f servers/docker-compose.dev.yml ps | grep -q "$service.*Up"; then
         echo -e "${GREEN}✅ $service_name 실행 중${NC}"
         
         # 컨테이너 상세 정보
-        container_id=$(docker compose -f services/hospital_workers/docker-compose.yml ps -q $service)
+        container_id=$(docker compose -f servers/docker-compose.dev.yml ps -q $service)
         if [ ! -z "$container_id" ]; then
             echo "🔍 컨테이너 정보:"
             echo "   📦 컨테이너 ID: $container_id"
@@ -72,7 +72,7 @@ monitor_service() {
         
         # 서비스별 로그 확인 (최근 3줄)
         echo "📋 최근 로그 (3줄):"
-        docker compose -f services/hospital_workers/docker-compose.yml logs --tail=3 $service
+        docker compose -f servers/docker-compose.dev.yml logs --tail=3 $service
         
         # 서비스별 연결 테스트
         case $service in
@@ -98,14 +98,14 @@ monitor_service() {
                 fi
                 ;;
             "db-server")
-                if docker compose -f services/hospital_workers/docker-compose.yml exec -T db-server pg_isready -U postgres > /dev/null 2>&1; then
+                if docker compose -f servers/docker-compose.dev.yml exec -T db-server pg_isready -U postgres > /dev/null 2>&1; then
                     echo -e "${GREEN}✅ PostgreSQL 연결 성공${NC}"
                 else
                     echo -e "${RED}❌ PostgreSQL 연결 실패${NC}"
                 fi
                 ;;
             "redis")
-                if docker compose -f services/hospital_workers/docker-compose.yml exec -T redis redis-cli ping | grep -q "PONG"; then
+                if docker compose -f servers/docker-compose.dev.yml exec -T redis redis-cli ping | grep -q "PONG"; then
                     echo -e "${GREEN}✅ Redis 연결 성공${NC}"
                 else
                     echo -e "${RED}❌ Redis 연결 실패${NC}"
@@ -118,7 +118,7 @@ monitor_service() {
         
         # 실패한 서비스의 로그 확인
         echo "📋 실패 로그:"
-        docker compose -f services/hospital_workers/docker-compose.yml logs --tail=5 $service
+        docker compose -f servers/docker-compose.dev.yml logs --tail=5 $service
     fi
     echo "----------------------------------------"
 }
@@ -184,7 +184,7 @@ monitor_http_connections() {
 # 데이터베이스 연결 모니터링 함수
 monitor_database() {
     echo -e "${BLUE}🗄️ 데이터베이스 연결 모니터링...${NC}"
-    if docker compose -f services/hospital_workers/docker-compose.yml exec -T db-server pg_isready -U postgres > /dev/null 2>&1; then
+            if docker compose -f servers/docker-compose.dev.yml exec -T db-server pg_isready -U postgres > /dev/null 2>&1; then
         echo -e "${GREEN}✅ PostgreSQL 연결 성공${NC}"
     else
         echo -e "${RED}❌ PostgreSQL 연결 실패${NC}"
@@ -195,7 +195,7 @@ monitor_database() {
 # Redis 연결 모니터링 함수
 monitor_redis() {
     echo -e "${BLUE}🔴 Redis 연결 모니터링...${NC}"
-    if docker compose -f services/hospital_workers/docker-compose.yml exec -T redis redis-cli ping | grep -q "PONG"; then
+            if docker compose -f servers/docker-compose.dev.yml exec -T redis redis-cli ping | grep -q "PONG"; then
         echo -e "${GREEN}✅ Redis 연결 성공${NC}"
     else
         echo -e "${RED}❌ Redis 연결 실패${NC}"
@@ -215,13 +215,13 @@ monitor_resources() {
 # 네트워크 연결 모니터링 함수
 monitor_network() {
     echo -e "${BLUE}🌐 서비스 간 네트워크 연결 모니터링...${NC}"
-    if docker compose -f services/hospital_workers/docker-compose.yml exec -T api-server sh -c "timeout 5 bash -c '</dev/tcp/db-server/5432'" > /dev/null 2>&1; then
+            if docker compose -f servers/docker-compose.dev.yml exec -T api-server sh -c "timeout 5 bash -c '</dev/tcp/db-server/5432'" > /dev/null 2>&1; then
         echo -e "${GREEN}✅ api-server → db-server 연결 성공${NC}"
     else
         echo -e "${RED}❌ api-server → db-server 연결 실패${NC}"
     fi
 
-    if docker compose -f services/hospital_workers/docker-compose.yml exec -T api-server sh -c "timeout 5 bash -c '</dev/tcp/redis/6379'" > /dev/null 2>&1; then
+            if docker compose -f servers/docker-compose.dev.yml exec -T api-server sh -c "timeout 5 bash -c '</dev/tcp/redis/6379'" > /dev/null 2>&1; then
         echo -e "${GREEN}✅ api-server → redis 연결 성공${NC}"
     else
         echo -e "${RED}❌ api-server → redis 연결 실패${NC}"
@@ -252,7 +252,7 @@ continuous_monitoring() {
         
         # 전체 서비스 상태 요약
         echo -e "${YELLOW}📊 전체 서비스 상태:${NC}"
-        docker compose -f services/hospital_workers/docker-compose.yml ps
+        docker compose -f servers/docker-compose.dev.yml ps
         
         echo "=================================="
         
@@ -273,7 +273,7 @@ summary_monitoring() {
     
     # 서비스 상태 요약
     echo -e "${YELLOW}📊 서비스 상태 요약:${NC}"
-    docker compose -f services/hospital_workers/docker-compose.yml ps --format "table {{.Name}}\t{{.Status}}\t{{.Ports}}"
+    docker compose -f servers/docker-compose.dev.yml ps --format "table {{.Name}}\t{{.Status}}\t{{.Ports}}"
     
     echo "=================================="
     
